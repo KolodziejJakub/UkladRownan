@@ -10,14 +10,6 @@
    }
   return Wynik;
 }*/
-  Wektor Wektor::operator += (const Wektor & W2)
-  {
-      for (int i=0; i<ROZMIAR; i++)
-      {
-          tab[i]=tab[i]+W2[i];
-      }
-    return tab;
-  }
 
   Wektor Wektor::operator + (const Wektor & W2) const
   {
@@ -67,7 +59,7 @@ Wektor Wektor::operator * (double l1) const
   {
     for (int i=0; i<ROZMIAR; i++)
       {
-          if(tab[i] != W2[i])
+          if(abs(tab[i]-W2[i]) >= 0.000001)
             return false;
       }
     return true;
@@ -83,13 +75,13 @@ Wektor Wektor::operator * (double l1) const
     return true;
   }
 
-  double dlugosc() const
+  double Wektor::dlugosc() const
     {
     double dlugosc;
 
     for (int i=0; i<ROZMIAR; i++ )
         {
-        dlugosc =  dlugosc + (tab[i]*tab[i]);
+        dlugosc =  dlugosc + pow(tab[i], 2);
         }
 
     dlugosc = pow(dlugosc, (1/2));
@@ -97,7 +89,7 @@ Wektor Wektor::operator * (double l1) const
     return dlugosc;
     }
 
-double Wektor::operator[] (int index) const
+double & Wektor::operator[] (int index)
 {
     if (index < 0 || index >= ROZMIAR) 
     {
@@ -108,7 +100,7 @@ double Wektor::operator[] (int index) const
     return tab[index];
 }
 
-double Wektor::operator[] (int index)
+const double & Wektor::operator[] (int index) const
 {
     if (index < 0 || index >= ROZMIAR) 
     {

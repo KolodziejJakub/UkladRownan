@@ -85,6 +85,7 @@ public:
   MacierzKw(Wektor *w);
   MacierzKw(/*9 double*/);
   MacierzKw(Wektor a1, Wektor a2, Wektor a3);
+  
   const MacierzKw & transpozycja() const;
   void transpozycja();
 
@@ -106,8 +107,8 @@ public:
   const Wektor & operator[] (int index) const;
   Wektor & operator[] (int index); // M[2][0] - zerowy element drugiego wektora macierzy
 
-  const double & operator() (int ind1, int ind2) const;
-  double & operator() (int ind1, int ind2); //M(2,0)
+const double & operator() (int ind1, int ind2) const;
+double & operator() (int ind1, int ind2);   //M(2,0)
 
   const Wektor & zwroc_kolumne(int ind); //dla wierszowej
   void zmien_kolumne(int ind, Wektor nowa);
@@ -142,7 +143,6 @@ public:
   void zmien_wektor_wolny(Wektor nowy);
   const MacierzKw & zwroc_macierz(); 
   void zmien_macierz(MacierzKw nowy);
-  
   
 };
 

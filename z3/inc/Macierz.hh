@@ -15,13 +15,32 @@ class Macierz {
   Wektor tab[ROZMIAR];
 
   public:
+  Macierz();
+  Macierz(double a11, double a12, double a13, double a21, double a22, double a23, double a31, double a32, double a33);
   Macierz(Wektor a1, Wektor a2, Wektor a3);
 
-  const double & operator() (int ind1, int ind2) const;
-  double & operator() (int ind1, int ind2);
+  Wektor operator * (Wektor W);
+  Macierz operator * (Macierz W);
+  Macierz operator + (Macierz W);
+  Macierz operator - (Macierz W);
+  Macierz operator * (double l);
+
+  double wyznacznikSarus();
+
+  void odwrotnosc();
+  double Wyznacznik2x2(double mac2x2[4]);
+
+  const Wektor & operator[] (int index) const;
+  Wektor & operator[] (int index);
 
   const Macierz & transpozycja() const;
   void transpozycja();
+
+  bool operator == (const Macierz & W2) const;
+  bool operator != (const Macierz & W2) const;
+
+  const Wektor & zwroc_kolumne(int ind);
+  void zmien_kolumne(int ind, Wektor nowa);
 };
 
 

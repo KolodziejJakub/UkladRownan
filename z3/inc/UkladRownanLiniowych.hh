@@ -2,42 +2,36 @@
 #define UKLADROWNANLINIOWYCH_HH
 
 #include <iostream>
+#include "Macierz.hh"
+#include "Wektor.hh"
 
 
 /*
  *  Tutaj trzeba opisac klase. Jakie pojecie modeluje ta klasa
  *  i jakie ma glowne cechy.
  */
-class UkladRownanLiniowych {
-  /*
-   *  Tutaj trzeba wstawic definicje odpowiednich pol i metod prywatnych
-   */
+class UkladRownanL {
+  
+  Macierz A;
+  Wektor b;
+  
   public:
-  /*
-   *  Tutaj trzeba wstawic definicje odpowiednich metod publicznych
-   */    
+  Wektor oblicz();
+  UkladRownanL();
+  UkladRownanL(Macierz A, Wektor b);   
+
+  const Macierz & get_A() const; 
+  const Wektor & get_b() const;
+
+  void set_A(const Macierz & in);
+  void set_b(const Wektor & in);
 };
 
 
-/*
- * To przeciazenie trzeba opisac. Co ono robi. Jaki format
- * danych akceptuje. Jakie jest znaczenie parametrow itd.
- * Szczegoly dotyczace zalecen realizacji opisow mozna
- * znalezc w pliku:
- *    ~bk/edu/kpo/zalecenia.txt 
- */
-std::istream& operator >> (std::istream &Strm, UkladRownanLiniowych &UklRown);
+std::istream& operator >> (std::istream &Strm, UkladRownanL &UklRown);
 
-/*
- * To przeciazenie trzeba opisac. Co ono robi. Jaki format
- * danych akceptuje. Jakie jest znaczenie parametrow itd.
- * Szczegoly dotyczace zalecen realizacji opisow mozna
- * znalezc w pliku:
- *    ~bk/edu/kpo/zalecenia.txt 
- */
-std::ostream& operator << ( std::ostream                  &Strm, 
-                            const UkladRownanLiniowych    &UklRown
-                          );
+
+std::ostream& operator << ( std::ostream &Strm, const UkladRownanL    &UklRown);
 
 
 #endif
